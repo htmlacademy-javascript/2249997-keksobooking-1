@@ -29,26 +29,6 @@ numberrize('2023');
 numberrize('-1');
 numberrize('1.5');
 
-// Функция, которая принимает три параметра: исходную строку, минимальную длину и строку с добавочными символами —
-// и возвращает исходную строку, дополненную указанными символами до заданной длины. Символы добавляются в начало
-// строки. Если исходная строка превышает заданную длину, она не должна обрезаться. Если «добивка» слишком длинная,
-// она обрезается с конца.
-function padStart(string, targetLength, padString) {
-  targetLength = targetLength >> 0; //floor if number or convert non-number to 0;
-  padString = String(padString || ' ');
-  if (string.length > targetLength) {
-    return String(this);
-  } else {
-    targetLength = targetLength - string.length;
-    if (targetLength > padString.length) {
-      padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
-    }
-    return padString.slice(0, targetLength) + string;
-  }
-}
-
-padStart('qwweert', 25, 0);
-
 // Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
 // Будет использоваться для генерации временных географических координат в следующем задании. Пример
 // использования функции:
