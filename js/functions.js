@@ -37,6 +37,3 @@ const getNumberFromRange = (min, max, numberToFixed) => {
   return numberOfRange.toFixed(numberToFixed);
 };
 getNumberFromRange (10, 15, 5);
-
-
-
