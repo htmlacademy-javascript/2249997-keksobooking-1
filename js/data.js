@@ -1,4 +1,4 @@
-import {getRandomNumber, createRandomIdFromRangeGenerator, padStart} from './util.js';
+import {getRandomNumber, createRandomIdFromRangeGenerator, padStart, getRandomArrayElement} from './util.js';
 
 const OFFER_TITLES = [
   'Супер оказия',
@@ -54,41 +54,39 @@ const OFFER_PHOTOS = [
 
 const SIMILAR_OBJECT_COUNT = 10;
 
-const getRandomArrayElement = (elements) =>
-  elements[getRandomNumber(0, elements.length - 1)];
-
 const generateRandomFeatureFromRange = createRandomIdFromRangeGenerator(0, OFFER_FEATURES.length - 1);
 
 // СОЗДАЕМ ЕДИНИЧНЫЙ ОБЪЕКТ
-const createObject = (index) => ({
-  author: {
-    avatar: `img/avatars/user${padStart(`${index}`, 2, '0')}.png`,
-  },
-  offer: {
-    title: getRandomArrayElement(OFFER_TITLES),
-    address: {
-      lat: getRandomNumber(35.65, 35.7, 5),
-      lng: getRandomNumber(139.7, 139.8, 5),
+const createObject = (index) => {
+  const lat = getRandomNumber(35.65, 35.7, 5);
+  const lng = getRandomNumber(139.7, 139.8, 5);
+
+  return {
+    author: {
+      avatar: `img/avatars/user${padStart(`${index}`, 2, '0')}.png`,
     },
-    price: getRandomNumber(1000, 10000),
-    type: getRandomArrayElement(OFFER_TYPES),
-    rooms: getRandomNumber(1, 5),
-    guests: getRandomNumber(1, 10),
-    checkin: getRandomArrayElement(OFFER_CHECKINS),
-    checkout: getRandomArrayElement(OFFER_CHECKOUTS),
-    features: Array.from({ length: getRandomNumber(1, OFFER_FEATURES.length) }, () => OFFER_FEATURES[generateRandomFeatureFromRange()]),
-    description: getRandomArrayElement(OFFER_DESCRIPTIONS),
-    photos: Array.from({ length: getRandomNumber(1, 15) }, () =>
-      getRandomArrayElement(OFFER_PHOTOS)
-    ),
-  },
-  location: {
-    lat: getRandomNumber(35.65, 35.7, 5),
-    lng: getRandomNumber(139.7, 139.8, 5),
-  },
-});
+    offer: {
+      title: getRandomArrayElement(OFFER_TITLES),
+      // eslint-disable-next-line no-template-curly-in-string
+      address: '${lat} ${lng}',
+      price: getRandomNumber(1000, 10000),
+      type: getRandomArrayElement(OFFER_TYPES),
+      rooms: getRandomNumber(1, 5),
+      guests: getRandomNumber(1, 10),
+      checkin: getRandomArrayElement(OFFER_CHECKINS),
+      checkout: getRandomArrayElement(OFFER_CHECKOUTS),
+      features: Array.from({ length: getRandomNumber(1, OFFER_FEATURES.length) }, () => OFFER_FEATURES[generateRandomFeatureFromRange()]),
+      description: getRandomArrayElement(OFFER_DESCRIPTIONS),
+      photos: Array.from({ length: getRandomNumber(1, 15) }, () =>
+        getRandomArrayElement(OFFER_PHOTOS)
+      ),
+    },
+    location: { lat, lng },
+  };
+
+};
 
 const similarObjects = Array.from({ length: SIMILAR_OBJECT_COUNT }, (item, i) => createObject(i + 1));
 
 
-export {similarObjects};
+export {createObject, SIMILAR_OBJECT_COUNT};
