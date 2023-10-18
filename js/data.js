@@ -86,7 +86,7 @@ const createObject = (index) => {
 
 };
 
-const similarObjects = Array.from({ length: SIMILAR_OBJECT_COUNT }, (item, i) => createObject(i + 1));
+const createObjects = (length = SIMILAR_OBJECT_COUNT) =>
+  Array.from({ length }, (item, i) => createObject(i + 1));
 
-
-export {createObject, SIMILAR_OBJECT_COUNT};
+export {createObject, createObjects};

@@ -1,5 +1,5 @@
 // Функция для проверки, является ли строка палиндромом.
-const isPolindrom = (str) => {
+const isPalindrome = (str) => {
   const lowerStr = str.toLowerCase().split(' ').join('');
   if(lowerStr === lowerStr.split('').reverse().join('')) {
     return true;
@@ -7,7 +7,7 @@ const isPolindrom = (str) => {
   return false;
 };
 
-isPolindrom ('Лёша на полке клопа нашёл');
+isPalindrome ('Лёша на полке клопа нашёл');
 
 // Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого
 // положительного числа. Если в строке нет ни одной цифры, функция должна вернуть NaN:
@@ -20,14 +20,14 @@ isPolindrom ('Лёша на полке клопа нашёл');
 // 3.Оборачиваем это в parseInt: строка, состоящая только из цифр, даст целое число, отбросив нули слева (пример 007),
 // а пустая строка (то есть если в исходном были только не-цифры) дает NaN
 
-const numberrize = (str) => parseInt(str.toString().replace(/\D/g, ''), 10);
-numberrize('ECMAScript 2022');
-numberrize('1 кефир, 0.5 батона');
-numberrize('агент 007');
-numberrize('а я томат');
-numberrize('2023');
-numberrize('-1');
-numberrize('1.5');
+const numberize = (str) => parseInt(str.toString().replace(/\D/g, ''), 10);
+numberize('ECMAScript 2022');
+numberize('1 кефир, 0.5 батона');
+numberize('агент 007');
+numberize('а я томат');
+numberize('2023');
+numberize('-1');
+numberize('1.5');
 
 // Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
 // Будет использоваться для генерации временных географических координат в следующем задании. Пример
