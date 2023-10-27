@@ -94,3 +94,13 @@ const getRandomArrayElement = (elements) =>
   elements[getRandomNumber(0, elements.length - 1)];
 
 export {getRandomNumber, createRandomIdFromRangeGenerator, padStart, getRandomArrayElement};
+
+const fillElement = (element, items, callback) => {
+  if (!items.length) {
+    element.remove();
+  } else {
+    element.innerHTML = items.map(callback).join('');
+  }
+};
+
+export {fillElement};
