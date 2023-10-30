@@ -93,7 +93,6 @@ const padStart = (string, targetLength, padString) => {
 const getRandomArrayElement = (elements) =>
   elements[getRandomNumber(0, elements.length - 1)];
 
-export {getRandomNumber, createRandomIdFromRangeGenerator, padStart, getRandomArrayElement};
 
 const fillElement = (element, items, callback) => {
   if (!items.length) {
@@ -103,4 +102,4 @@ const fillElement = (element, items, callback) => {
   }
 };
 
-export {fillElement};
+export {fillElement, getRandomNumber, createRandomIdFromRangeGenerator, padStart, getRandomArrayElement};

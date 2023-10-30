@@ -1,4 +1,6 @@
 import { createObjects } from './data.js';
+import { renderOffers } from './render-offers.js';
 
 
-console.log(createObjects());
+document.querySelector('#map-canvas')
+  .append(renderOffers(createObjects()));

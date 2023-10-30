@@ -1,7 +1,7 @@
 import {getRandomNumber, createRandomIdFromRangeGenerator, padStart, getRandomArrayElement} from './util.js';
 import {OFFER_TITLES, OFFER_CHECKINS, OFFER_CHECKOUTS, OFFER_DESCRIPTIONS, OFFER_FEATURES, OFFER_PHOTOS, OFFER_TYPES} from './constants.js';
 
-const SIMILAR_OBJECT_COUNT = 10;
+
 const offerTypesKeys = Object.keys(OFFER_TYPES);
 const generateRandomFeatureFromRange = createRandomIdFromRangeGenerator(0, OFFER_FEATURES.length - 1);
 
@@ -35,7 +35,7 @@ const createObject = (index) => {
 
 };
 
-const createObjects = (length = SIMILAR_OBJECT_COUNT) =>
+const createObjects = (length = 10) =>
   Array.from({ length }, (item, i) => createObject(i + 1));
 
 export {createObject, createObjects};
